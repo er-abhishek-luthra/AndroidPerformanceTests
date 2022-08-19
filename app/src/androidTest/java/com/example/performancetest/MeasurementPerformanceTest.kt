@@ -88,7 +88,7 @@ class MeasurementPerformanceTest {
         }
 
     companion object {
-        private val BASIC_SAMPLE_PACKAGE = "com.example.nestedviewoverdraw"
+        private val BASIC_SAMPLE_PACKAGE = "com.example.performancetest"
         private val LAUNCH_TIMEOUT = 5000L
     }
 }

@@ -12,7 +12,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nestedviewoverdraw.R
+import com.example.performancetest.R
 import java.lang.ref.WeakReference
 
 class NestedViewHierarchyTestActivty : AppCompatActivity() {
