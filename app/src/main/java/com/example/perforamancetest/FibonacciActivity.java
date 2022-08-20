@@ -25,11 +25,9 @@ public class FibonacciActivity extends Activity {
         theButtonThatDoesFibonacciStuff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Debug.startMethodTracing("fibonacci_trace_main_thread");
                 // Compute the 40th number in the fibonacci sequence, then dump to log output. Note
                 // how the UI hangs each time you do this.
                 Log.i(LOG_TAG, String.valueOf(computeFibonacci(30)));
-                Debug.stopMethodTracing();
 
             }
         });
