@@ -1,6 +1,7 @@
 package com.example.perforamancetest;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
@@ -27,8 +28,7 @@ public class FibonacciActivity extends Activity {
             public void onClick(View v) {
                 // Compute the 40th number in the fibonacci sequence, then dump to log output. Note
                 // how the UI hangs each time you do this.
-                Log.i(LOG_TAG, String.valueOf(computeFibonacci(30)));
-
+                new FibonacciAsyncTask().execute(40);
             }
         });
 
@@ -42,18 +42,44 @@ public class FibonacciActivity extends Activity {
     }
 
     /**
-     *  Why store things when you can recurse instead?  Don't let evidence, personal experience,
-     *  or rational arguments from your peers fool you.  The elegant solution is the best solution.
-     *
-     * @param positionInFibSequence  The position in the fibonacci sequence to return.
-     * @return the nth number of the fibonacci sequence.  Seriously, try to keep up.
+     *  Optimized Fibonacci Code
      */
-    public int computeFibonacci(int positionInFibSequence) {
-        if (positionInFibSequence <= 2) {
-            return 1;
-        } else {
-            return computeFibonacci(positionInFibSequence - 1)
-                    + computeFibonacci(positionInFibSequence - 2);
+
+
+    private class FibonacciAsyncTask extends AsyncTask<Integer,Void,Integer>{
+        int[] fibonacciList ;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... integers) {
+            return  computeFibonacci(integers[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
+            Log.i(LOG_TAG, String.valueOf(integer));
+
+        }
+
+        public int computeFibonacci(int positionInFibSequence) {
+            if(fibonacciList == null){
+                fibonacciList = new int[positionInFibSequence+1];
+            }
+            if(positionInFibSequence==0){
+                return 0;
+            }
+            else if(positionInFibSequence ==1){
+                return 1;
+            }
+            else if(fibonacciList[positionInFibSequence]==0){
+                fibonacciList[positionInFibSequence]= computeFibonacci(positionInFibSequence-1)+computeFibonacci(positionInFibSequence-2);
+            }
+            return fibonacciList[positionInFibSequence];
         }
     }
 }
