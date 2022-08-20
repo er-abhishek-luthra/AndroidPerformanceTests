@@ -82,7 +82,7 @@ class MeasurementPerformanceTest {
             val intent = Intent(Intent.ACTION_MAIN)
             intent.addCategory(Intent.CATEGORY_HOME)
 
-            val pm = InstrumentationRegistry.getInstrumentation().getContext().packageManager
+            val pm = InstrumentationRegistry.getInstrumentation().context.packageManager
             val resolveInfo = pm.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
             return resolveInfo?.activityInfo?.packageName?:""
         }
