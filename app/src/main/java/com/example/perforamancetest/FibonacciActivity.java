@@ -28,7 +28,7 @@ public class FibonacciActivity extends Activity {
             public void onClick(View v) {
                 // Compute the 40th number in the fibonacci sequence, then dump to log output. Note
                 // how the UI hangs each time you do this.
-                new FibonacciAsyncTask().execute(40);
+                new FibonacciAsyncTask().execute(30);
             }
         });
 
