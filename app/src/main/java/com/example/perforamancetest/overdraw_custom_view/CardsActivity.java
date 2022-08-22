@@ -48,7 +48,7 @@ public class CardsActivity extends Activity {
             }
         }
 
-        final UnOptimizedCardsView droidCardView = new UnOptimizedCardsView(
+        final OptimizedCardsView droidCardView = new OptimizedCardsView(
                 this,
                 cardModels,
                 DROID_IMAGE_WIDTH,

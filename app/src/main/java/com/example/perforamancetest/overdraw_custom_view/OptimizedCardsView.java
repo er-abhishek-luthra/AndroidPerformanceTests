@@ -15,10 +15,10 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 /**
- * A custom view that presents a stacked overlapping collection of  cards. OnDraw method draws the all cards
- * completely irrespective of whether the entire card is visible or not
+ * A custom view that presents a stacked overlapping collection of  cards. OnDraw method draws only the portion
+ * of the card that is visible on the screen
  */
-class UnOptimizedCardsView extends View {
+class OptimizedCardsView extends View {
     /**
      * Array of cards to be displayed in the view.
      */
@@ -51,8 +51,8 @@ class UnOptimizedCardsView extends View {
      * @param imageWidth   The width of each card which is shown
      * @param cardSpacing       The difference in left edge positions of two consecutive image cards.
      */
-    public UnOptimizedCardsView(Context context, CardModel[] cardModels, float imageWidth,
-                                float cardSpacing) {
+    public OptimizedCardsView(Context context, CardModel[] cardModels, float imageWidth,
+                              float cardSpacing) {
         super(context);
 
         mCardModels = cardModels;
@@ -69,15 +69,37 @@ class UnOptimizedCardsView extends View {
      * Drawing implementation to draw all the cards completely .
      */
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        // Don't draw anything until all the Asynctasks are done and all the Cards are ready.
+        // Don't draw anything until all the Asynctasks are done and all the DroidCards are ready.
         if (mCardModels.length > 0 && mCards.size() == mCardModels.length) {
-            // Loop over all the cards, except the last one.
-            for (int i = 0; i < mCards.size(); i++) {
+            // Loop over all the droids, except the last one.
+            int i;
+            for (i = 0; i < mCards.size() - 1; i++) {
+
                 // Each card is laid out a little to the right of the previous one.
                 mCardLeft = i * mCardSpacing;
+
+                // Save the canvas state.
+                canvas.save();
+
+                // Restrict the drawing area to only what will be visible.
+                canvas.clipRect(
+                        mCardLeft,
+                        0,
+                        mCardLeft + mCardSpacing,
+                        mCards.get(i).getHeight()
+                );
+
+                // Draw the card. Only the parts of the card that lie within the bounds defined by
+                // the clipRect() get drawn.
                 drawCard(canvas, mCards.get(i), mCardLeft, 0);
+
+                // Revert canvas to non-clipping state.
+                canvas.restore();
             }
+
+            // Draw the final card. This one doesn't get clipped.
+            drawCard(canvas, mCards.get(mCards.size() - 1),
+                    mCardLeft + mCardSpacing, 0);
         }
 
         // Invalidate the whole view. Doing this calls onDraw() if the view is visible.
