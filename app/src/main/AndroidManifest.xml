@@ -15,7 +15,7 @@
         android:largeHeap="true"
         >
         <activity
-            android:name="com.example.perforamancetest.overdraw_custom_view.ImageActivity"
+            android:name="com.example.perforamancetest.overdraw_custom_view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

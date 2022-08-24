@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_layout_1.xml" value="0.2075" />
         <entry key="app/src/main/res/layout/activity_cards.xml" value="0.19047619047619047" />
         <entry key="app/src/main/res/layout/activity_constraintlayout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_droid_cards.xml" value="0.11594202898550725" />
