@@ -1,4 +1,4 @@
-package com.example.perforamancetest.overdraw_custom_view.data;
+package com.example.perforamancetest.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

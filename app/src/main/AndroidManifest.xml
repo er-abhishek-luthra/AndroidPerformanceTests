@@ -13,10 +13,10 @@
         tools:targetApi="31"
         android:theme="@style/Theme.AppCompat"
         android:largeHeap="true"
-        android:name="com.example.perforamancetest.overdraw_custom_view.TestApplication"
+        android:name="com.example.perforamancetest.TestApplication"
         >
         <activity
-            android:name="com.example.perforamancetest.overdraw_custom_view.DataOperationsActivity"
+            android:name="com.example.perforamancetest.DataOperationsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
