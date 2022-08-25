@@ -25,6 +25,7 @@ public class DataOperationsActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_db_operations);
 
         WebView webView = (WebView) findViewById(R.id.webview);
         webView.getSettings().setUseWideViewPort(true);
@@ -33,7 +34,6 @@ public class DataOperationsActivity extends Activity {
 
         PersonDataBase personDataBase =((TestApplication)getApplication()).getPersonDataBase();
         PersonDao personDao = personDataBase.personDao();
-        setContentView(R.layout.activity_db_operations);
         TextView textView = findViewById(R.id.tv_name);
         findViewById(R.id.btn_put_data).setOnClickListener(v -> {
             Person[] personArray = new Person[10000];
