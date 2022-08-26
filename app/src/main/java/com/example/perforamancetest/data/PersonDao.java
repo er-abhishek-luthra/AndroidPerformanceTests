@@ -16,7 +16,7 @@ public interface PersonDao {
     @Query("SELECT * FROM Person WHERE uid IN (:userIds)")
     List<Person> loadAllByIds(int[] userIds);
 
-    @Query("SELECT * FROM Person WHERE first_name LIKE :first  LIMIT 1")
+    @Query("SELECT * FROM Person WHERE first_name = :first  LIMIT 1")
     Person findByFirstName(String first);
 
     @Query("SELECT * FROM Person WHERE uid = :id")
