@@ -36,7 +36,7 @@ public class DataOperationsActivity extends Activity {
         findViewById(R.id.btn_get_data).setOnClickListener(v -> {
             textView.setText("In Progress");
             for( int index =0; index<1000; index++){
-                Person person = personDao.findById(index);
+                Person person = personDao.findByName(FIRST_NAME,LAST_NAME);
                 textView.setText(person.firstName + " " + person.lastName);
             }
             textView.setText("Done");
