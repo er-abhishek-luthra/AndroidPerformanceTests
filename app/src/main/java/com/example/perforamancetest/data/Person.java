@@ -6,7 +6,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity
-        (indices = {@Index("first_name")})
+//        (indices = {@Index("first_name")})
 public class Person {
     @PrimaryKey
     public int uid;
